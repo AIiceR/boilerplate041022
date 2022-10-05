@@ -1,0 +1,9 @@
+ // mixins are sets of styles grouped together, allowing reuse 
+
+ @mixin flex($bstyle, $h) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.5em $bstyle $maincolor;
+    height: $h;
+ }

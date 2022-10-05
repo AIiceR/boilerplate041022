@@ -1,12 +1,75 @@
-// @import "base";
+@import "base";
 // You need the base only when you are not using bootstrap. In that case, go to _base.scss
 // to customize it as you may want.
 
+@import "mixins";
 @import "variables";
-@import "../../node_modules/bootstrap/scss/bootstrap";
-
 // Write your sass code here or import partials
 
-h1 {
-  color: tomato;
+.welcome {
+  @include flex(double, 50vh);
+ 
 }
+
+h1 {
+  color: $maincolor;
+}
+
+section {
+  margin: 2em;
+  padding: 1em;
+  color: darken($maincolor, 25%); //increases the original color's darkness value
+  background: lighten($maincolor, 30%); //decreases the orginal colour's lightness value 
+  
+  //SASS/SCSS color functions 
+  // hue, saturation, lightness
+  //hsla (110, 70%, 50%)
+
+  //if using SASS directly on the command line, you can view values with @debug
+  // @debug lighten($maincolor, 30%);
+
+  border: 2px solid;
+
+  p, h2  {
+    margin-bottom: 1em; 
+  }
+
+  // The SCSS Ampersand 
+
+&:hover {
+  background: lightpink;
+}  
+
+&.first { // Same as writing "section.first"
+ 
+  img {
+    float: left;
+    margin: 0 1em 1em 0;
+  }
+ }
+ &.second {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  h2 { flex-basis: 100%; }
+  img { flex-basis: 100px; flex-grow: 0; }
+  > * {
+    flex-basis: 33%;
+    flex-grow: 1;
+  }
+ }
+ &.third {
+  img {
+    position: static;
+    position: relative; // normal flow, space reserved, ca be offset relative to itself with t/r/b/l; positioned element 
+    position: absolute; // out fo normal flow, no space reserved, location relative to closest positioned ancestor based on t/r/b/l
+    position: fixed; // outof normal flow, no space reserved, location usually relative to viewpoint 
+    position: sticky; //normal flow UNTIL it scrolls up from viewport top, THEN fixed based on t/r/b/l
+    top: 10px;
+    
+
+  }
+ }
+}
+
+
